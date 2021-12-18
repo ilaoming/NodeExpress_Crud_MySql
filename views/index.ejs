@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <title>Registro de productos</title>
+</head>
+<body>
+  <div class="container mt-4  col-md-10">
+    <h1 class="text-center mb-5"><span><i class="fas fa-cash-register" style="color: brown;"></i></span> Registro de productos</h1>
+    <div class="row">
+      <div class="col-4 mx-auto">
+
+        <form action="/guardar" method="POST" class="mt-3">
+          <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fas fa-cart-plus"></i></span>
+            <input type="text" class="form-control" id="prod_nom" name="prod_nom"  placeholder="Ingrese Producto"  >
+          </div>  
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="descripcion-icon"><i class="fas fa-book"></i></span>
+            <input type="text" class="form-control" id="prod_desc" name="prod_desc" placeholder="Ingrese Descripcion">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+            <input type="text" class="form-control" id="prod_precio" name="prod_precio" placeholder="Ingrese Precio">
+          </div>
+
+          <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+
+        </form>
+      </div>
+      <div class="col-6 mx-auto">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Precio</th>
+              <th scope="col" style="color: red;">Eliminar</th>
+            </thead>
+            <% for(let i=0;i<producto.length;i++) { %>
+              <tbody>
+                <tr>
+                  <td><a href="/actualizar-form?prod_id=<%=producto[i].prod_id%>" ><%=producto[i].prod_nom%></a></td>
+                  <td><a href="/actualizar-form?prod_id=<%=producto[i].prod_id%>" ><%=producto[i].prod_desc%></a></td>
+                  <td><a href="/actualizar-form?prod_id=<%=producto[i].prod_id%>" ><%=producto[i].prod_precio%></a></td>
+                  <td class="text-center"><a href="/eliminar-producto?prod_id=<%=producto[i].prod_id%>" onclick="return confirm('Desea eliminar este producto ?')"><i class="fas fa-window-close" style="color: red;"></i></a></td>
+                </tr>
+              </tbody>
+            <% } %>
+            <tfoot style="text-align:center">
+              <tr>
+                <td colspan="4">Mostrado <%=producto.length%> registros</td>
+              </tr>
+            </tfoot>  
+        </table>
+     </div>
+  </div>
+  </div>
+</body>
+</html>

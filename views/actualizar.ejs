@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <title>Actualización de productos</title>
+</head>
+<body>
+    <div class="container mt-4"> 
+        <div class="row">
+            <h1><span><a href="/"><i class="fas fa-undo-alt" style="color: orange;"></i></a></span> Actualización de productos</h1>
+            <div class="row">
+              <div class="col-4">
+        
+                <form action="/actualizar-producto" method="POST" class="mt-4">
+
+                  <div class="mb-3">
+                    <label for="prod_id" class="form-label"><i class="fas fa-barcode"></i> Codigo : <%=producto.prod_id%></label>
+                    <input type="hidden" id="prod_id" name="prod_id" class="form-control" value="<%=producto.prod_id%>">
+                  </div>
+
+                  <div class="input-group mb-3">
+                  <span class="input-group-text"><i class="fas fa-cart-plus"></i></span>
+                    <input type="text" class="form-control" id="prod_nom" name="prod_nom"  value="<%=producto.prod_nom%>">
+                  </div>  
+        
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="descripcion-icon"><i class="fas fa-book"></i></span>
+                    <input type="text" class="form-control" id="prod_desc" name="prod_desc"  value="<%=producto.prod_desc%>">
+                  </div>
+        
+                  <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    <input type="text" class="form-control" id="prod_precio" name="prod_precio"  value="<%=producto.prod_precio%>">
+                  </div>
+        
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Actualizar</button>
+        
+                </form>
+        </div>
+    </div>
+</body>
+</html>
